@@ -4,7 +4,7 @@ connection: "analytics_310958311"
 include: "/views/*.view.lkml"
 include: "/derived_tables/*.view.lkml"
 # include: "*.dashboard.lookml"
-# include: "*.dashboard"
+include: "*.dashboard"
 
 
 

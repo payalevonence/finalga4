@@ -53,6 +53,32 @@ view: events {
         END;;
   }
 
+  # dimension: audience_cohorts {
+  #   view_label: "Audience"
+  #   group_label: "Audience Cohorts"
+  #   description: "Dynamic cohort field based on value set in 'Audience Selector' filter."
+  #   type: string
+  #   sql: CASE
+  #             WHEN {% parameter audience_selector %} = 'Channel' THEN ${session_attribution_channel}
+  #             WHEN {% parameter audience_selector %} = 'Medium' THEN ${session_attribution_medium}
+  #             WHEN {% parameter audience_selector %} = 'Source' THEN ${session_attribution_source}
+  #             WHEN {% parameter audience_selector %} = 'Source Medium' THEN ${session_attribution_source_medium}
+  #             WHEN {% parameter audience_selector %} = 'Device' THEN ${device_data_device_category}
+  #             WHEN {% parameter audience_selector %} = 'Browser' THEN ${device_data_web_info_browser}
+  #             WHEN {% parameter audience_selector %} = 'Metro' THEN ${geo_data_metro}
+  #             WHEN {% parameter audience_selector %} = 'Country' THEN ${geo_data_country}
+  #             WHEN {% parameter audience_selector %} = 'Continent' THEN ${geo_data_continent}
+  #             WHEN {% parameter audience_selector %} = 'Language' THEN ${device_data_language}
+  #             WHEN {% parameter audience_selector %} = 'Operating System' THEN ${device_data_operating_system}
+  #       END;;
+  # }
+
+
+
+
+
+
+
   dimension: event_id {
     primary_key: yes
     hidden: no
@@ -426,9 +452,48 @@ view: events {
     type: string
     sql: ${TABLE}.user_pseudo_id ;;
   }
+
+  measure: total_users {
+    label: "Users"
+    description: "Distinct/Unique count of Users"
+    type: count_distinct
+    sql: ${user_pseudo_id} ;;
+    # value_format_name: formatted_number
+  }
+
+  measure: all_total_users {
+    label: "all_Users"
+    description: "count of Users"
+    type: count
+    # sql: ${user_pseudo_id} ;;
+    # value_format_name: formatted_number
+  }
+
+  measure: percentage_returning_users {
+    view_label: "Audience"
+    group_label: "User"
+    label: "% Returning Users"
+    type: number
+    sql: ${total_returning_users}/nullif(${total_users},0) ;;
+    value_format_name: percent_2
+  }
+
+  measure: total_returning_users {
+    view_label: "Audience"
+    group_label: "User"
+    label: "Returning Users"
+    description: "Distinct/Unique count of User Pseudo ID where GA Session Number > 1"
+    type: count_distinct
+    sql: ${user_pseudo_id} ;;
+    # filters: [session_data_is_first_visit_session: "no"]
+    # value_format_name: formatted_number
+  }
+
   measure: count_of_events {
     type: count
   }
+
+
   measure: count_of_users {
     type: count_distinct
     sql: ${user_pseudo_id} ;;
@@ -444,6 +509,9 @@ view: events {
     sql: ${unique_session_id} ;;
     drill_fields: [unique_session_id]
   }
+
+
+
   measure: total_purchase_revenue_usd {
     group_label: "Ecommerce"
     label: "Purchase Revenue (USD)"

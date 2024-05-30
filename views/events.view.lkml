@@ -4,8 +4,6 @@ view: events {
   extends: [base_events, goals, event_funnel, page_funnel]
   sql_table_name: `first-infinity-408514.analytics_{{ _user_attributes['multiple_values'] }}.events_*` ;;
 
-  # sql_table_name: `first-infinity-408514.{{ _user_attributes['data_project'] }}.events_*` ;;
-  #sql_table_name: `first-infinity-408514.analytics_{{ _user_attributes['multiple_values'] }}.events_*` ;;
 
   # parameter: profile {
   #   type: unquoted

@@ -1,4 +1,4 @@
-connection: "analytics_310958311"
+connection: "ga4_tf_streaming"
 
 
 include: "/views/*.view.lkml"

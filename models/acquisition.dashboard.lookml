@@ -8,7 +8,7 @@
   elements:
   - title: Acquisition
     name: Acquisition
-    model: analytics_310958311
+    model: ga4_tf_streaming
     explore: events
     type: single_value
     fields: [events.count_of_sessions]
@@ -70,7 +70,7 @@
     height: 6
   - title: New Tile
     name: New Tile
-    model: analytics_310958311
+    model: ga4_tf_streaming
     explore: events
     type: single_value
     fields: [events.count_of_users]
@@ -132,7 +132,7 @@
     height: 6
   - title: New Tile
     name: New Tile (2)
-    model: analytics_310958311
+    model: ga4_tf_streaming
     explore: events
     type: single_value
     fields: [events.count_of_page_views]
@@ -194,7 +194,7 @@
     height: 6
   - title: Sessions by Cohort
     name: Sessions by Cohort
-    model: analytics_310958311
+    model: ga4_tf_streaming
     explore: events
     type: looker_bar
     fields: [events.audience_trait, events.count_of_sessions]
@@ -263,7 +263,7 @@
     height: 6
   - title: Users by Cohort
     name: Users by Cohort
-    model: analytics_310958311
+    model: ga4_tf_streaming
     explore: events
     type: looker_bar
     fields: [events.audience_trait, events.total_users]
@@ -332,7 +332,7 @@
     height: 6
   - title: Page Views by Cohort
     name: Page Views by Cohort
-    model: analytics_310958311
+    model: ga4_tf_streaming
     explore: events
     type: looker_bar
     fields: [events.audience_trait, events.count_of_page_views]
@@ -402,7 +402,7 @@
     height: 6
   - title: Session Breakdown
     name: Session Breakdown
-    model: analytics_310958311
+    model: ga4_tf_streaming
     explore: events
     type: looker_bar
     fields: [events.count_of_sessions, events.audience_trait, events_dt.event_rank_asc]
@@ -468,7 +468,7 @@
     height: 6
   - title: Session by Week
     name: Session by Week
-    model: analytics_310958311
+    model: ga4_tf_streaming
     explore: events
     type: looker_column
     fields: [events.count_of_sessions, events.audience_trait, events_dt.event_rank_asc,
@@ -537,7 +537,7 @@
     height: 6
   - title: Top Referrers
     name: Top Referrers
-    model: analytics_310958311
+    model: ga4_tf_streaming
     explore: events
     type: looker_bar
     fields: [events.traffic_source__source, events.count_of_sessions]
@@ -597,7 +597,7 @@
     height: 7
   - title: Top Landing Pages Top 10 Landing pages based on Sessions within timeframe
     name: Top Landing Pages Top 10 Landing pages based on Sessions within timeframe
-    model: analytics_310958311
+    model: ga4_tf_streaming
     explore: events
     type: looker_bar
     fields: [events.count_of_sessions, events.page]
@@ -660,7 +660,7 @@
     height: 7
   - title: Engagement
     name: Engagement
-    model: analytics_310958311
+    model: ga4_tf_streaming
     explore: events
     type: looker_grid
     fields: [events.count_of_sessions, sessions.bounce_rate, sessions.first_visit_sessions_percentage,
